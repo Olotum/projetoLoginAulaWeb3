@@ -5,11 +5,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="img/disco.png"/>
+        <title>Discoteca virtual</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <form action="Login" method="post" id="form-login">
+            <img src="img/lofi_girl.png" alt="Logotipo de uma nota de música" width="100"/>
+            <br><br>
+            
+            <input type="email" name="user" id="user" class="fields" placeholder="Digite seu email" required>
+            <br><br>
+            <input type="password" name="pass" id="pass" class="fields" placeholder="Digite seu senha" required>
+            <br><br>
+            <input type="submit" value="Entrar">
+        </form>
     </body>
 </html>

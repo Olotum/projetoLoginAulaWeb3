@@ -1,0 +1,30 @@
+
+html {
+    background-color: black;
+    background-image: url(https://images7.alphacoders.com/607/607021.jpg);
+    background-repeat: no-repeat;
+}
+
+#form-login {
+    padding: 5px;
+    margin: 10%;
+    text-align: center;
+}
+
+input[type=submit] {
+    
+    width: 120px;
+    padding: 5px 0px 5px 0px;
+    font-size: 18pt;
+    cursor: pointer;
+    border-radius: 18px;
+}
+
+.fields {
+    width: 200px;
+    font-size: 16px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 5px;
+    box-shadow: 3px 3px 3px black;
+}
