@@ -1,8 +1,9 @@
 
 html {
     background-color: black;
-    background-image: url(https://images7.alphacoders.com/607/607021.jpg);
+    background-image: url("../img/barzinho_background.jpg");
     background-repeat: no-repeat;
+    background-size: 115%;
 }
 
 #form-login {

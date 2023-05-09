@@ -1,8 +1,13 @@
 <%-- 
     Document   : home
-    Created on : 26 de abr. de 2023, 21:37:02
+    Created on : 26 de abr. de 2023, 21:12:55
     Author     : QI
 --%>
+
+<%@page import="model.User" %>
+<%
+    User uSession = (User)session.getAttribute("userLoggedSession");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +17,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bem vindo <%= request.getAttribute("userLogged") %>!</h1>
+        <%@include file="session/verify.jsp" %>
+        <p>
+        <h1>Bem vindo <%= (uSession != null) ? uSession.getUserName() : "visitante" %></h1>
+        <button onclick="window.location.href='session/logout.jsp'">Logout</button>
     </body>
 </html>

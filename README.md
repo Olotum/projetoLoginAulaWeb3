@@ -1,2 +1,2 @@
-# gerenciador
-Site para gerenciamento de recursos humanos e filiais, feito para o trabalho final Web3.
+# projetoweb3_09_n
+Projeto para a disciplina de Web III do curso técnico de informática da escola QI.
