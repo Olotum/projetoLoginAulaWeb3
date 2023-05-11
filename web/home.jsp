@@ -21,5 +21,8 @@
         <p>
         <h1>Bem vindo <%= (uSession != null) ? uSession.getUserName() : "visitante" %></h1>
         <button onclick="window.location.href='session/logout.jsp'">Logout</button>
+        <hr>
+        <button onclick="window.location.href='cadastro.jsp'">CADASTRAR</button>
+        <button onclick="window.location.href='lista.jsp'">Lista</button>
     </body>
 </html>
