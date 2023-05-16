@@ -14,7 +14,7 @@
     <body>
         <h1>Cadastro</h1>
         <hr>
-        <form action="#" method="post">
+        <form action="CadastroArtista" method="post">
             <h3>Novo artista</h3>
             <input type="text" name="artista" placeholder="Nome do Artista">
             <br><br>
