@@ -2,8 +2,13 @@
 html {
     background-color: black;
     background-image: url("../img/barzinho_background.jpg");
+    background-attachment: 
+    
     background-repeat: no-repeat;
     background-size: 115%;
+}
+background {
+ 
 }
 
 #form-login {

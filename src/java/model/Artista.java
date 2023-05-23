@@ -48,11 +48,11 @@ public class Artista {
         this.solo = solo;
     }
 
-    public int getId_artista() {
+    public int getIdArtista() {
         return id_artista;
     }
 
-    public void setId_artista(int id_artista) {
+    public void setIdArtista(int id_artista) {
         this.id_artista = id_artista;
     }
 

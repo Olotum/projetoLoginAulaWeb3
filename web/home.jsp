@@ -13,13 +13,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="img/musica-icon.png"/>
+        <link rel="stylesheet" href="css/style.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
         <%@include file="session/verify.jsp" %>
         <p>
-        <h1>Bem vindo <%= (uSession != null) ? uSession.getUserName() : "visitante" %></h1>
+        <h1 style = "color: #fff">Bem vindo <%= (uSession != null) ? uSession.getUserName() : "visitante" %></h1>
         <button onclick="window.location.href='session/logout.jsp'">Logout</button>
         <hr>
         <button onclick="window.location.href='cadastro.jsp'">CADASTRAR</button>
