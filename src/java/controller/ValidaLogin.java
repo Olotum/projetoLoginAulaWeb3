@@ -7,45 +7,47 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
-import model.Artista;
-import model.ArtistaDAO;
+import model.Sistema;
+import model.User;
 
-
-@WebServlet(name = "ArtistaUpdate", urlPatterns = {"/ArtistaUpdate"})
-public class ArtistaUpdate extends HttpServlet {
-
+@WebServlet(name = "ValidaLogin", urlPatterns = {"/verifica_usuario.java"})
+public class ValidaLogin extends HttpServlet {
+    private String user;
+    private String pass;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        //Recebendo o ID
-        int id = Integer.parseInt(request.getParameter("id"));
+        this.user = request.getParameter("user");
+        this.pass = request.getParameter("pass");
         
-        //Pegando registro do BD
+        Sistema obj = new Sistema();
+        obj.setNome(this.user);
+        obj.setSenha(this.pass);
+        
         try {
-            ArtistaDAO adao = new ArtistaDAO();
-            Artista art = adao.listById(id);
-            request.setAttribute("artista", art);
-            request.getRequestDispatcher("edit-artista.jsp")
-                    .forward(request, response);
-        } catch(SQLException | ClassNotFoundException erro) {
-        
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ArtistaUpdate</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Erro: " + erro + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        if(obj.isLogged()) {
+            HttpSession session = request.getSession();
+            session.setAttribute("userNameSession", obj);
+            request.setAttribute("userName", obj);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+        } else {
+            PrintWriter out = response.getWriter();
+            out.print(
+                    "<script>"
+                  + "alert('Acesso negado!');"
+                  + "window.location.replace('index.jsp');"
+                  + "</script>"
+            );
         }
+    } catch(SQLException | ClassNotFoundException erro) {
+        PrintWriter out = response.getWriter();
+            out.print(erro);
     }
-}
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

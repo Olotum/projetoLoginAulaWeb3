@@ -1,15 +1,33 @@
 
-html {
+.login {
     background-color: black;
     background-image: url("../img/barzinho_background.jpg");
-    background-attachment: 
-    
-    background-repeat: no-repeat;
+   
     background-size: 115%;
+    color:#ffffff;
 }
-background {
- 
+.pag {
+    background-color: black;
+    background-image: url("../img/bem_vindo.jpg");
+    
+    background-size: 150%;
+    background-repeat: no-repeat;
+    color: #ffffff;
 }
+.lista_text {
+    background-color: rgba(255,255,255,.5);
+    color: black;
+}
+table {
+     background-color: #ffffff;
+     background-image: none;
+     color: black;
+}
+a {
+   text-decoration: none;
+   color: black;
+}
+
 
 #form-login {
     padding: 5px;

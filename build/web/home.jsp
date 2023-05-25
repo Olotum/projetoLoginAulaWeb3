@@ -11,7 +11,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html class="pag">
     <head>
         <link rel="icon" href="img/musica-icon.png"/>
         <link rel="stylesheet" href="css/style.css"/>
@@ -20,11 +20,14 @@
     </head>
     <body>
         <%@include file="session/verify.jsp" %>
-        <p>
-        <h1 style = "color: #fff">Bem vindo <%= (uSession != null) ? uSession.getUserName() : "visitante" %></h1>
-        <button onclick="window.location.href='session/logout.jsp'">Logout</button>
+        <p style="color: #ffffff; font-size: 200%;">
+            Bem vindo <%= (uSession != null)
+                            ? uSession.getUserName()
+                            : "visitante" %>
+            <button onclick="window.location.href='session/logout.jsp'">Logout</button>
+        </p>
         <hr>
         <button onclick="window.location.href='cadastro.jsp'">CADASTRAR</button>
-        <button onclick="window.location.href='lista.jsp'">Lista</button>
+        <button onclick="window.location.href='lista.jsp'">LISTAR</button>
     </body>
 </html>

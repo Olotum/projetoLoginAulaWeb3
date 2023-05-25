@@ -8,74 +8,80 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
-import model.Artista;
-import model.ArtistaDAO;
+import model.Sistema;
+import model.SistemaDAO;
 
 
-@WebServlet(name = "CadastroArtista", urlPatterns = {"/CadastroArtista"})
-public class CadastroArtista extends HttpServlet {
+@WebServlet(name = "SistemaController", urlPatterns = {"/SistemaController"})
+public class SistemaController extends HttpServlet {      
     private int id;
-    private String artista;
-    private int genero;
-    private String nacionalidade;
-    private int solo;
+    private String nome;
+    private String nascimento;
+    private String cpf;
+    private String ra;
+    private String senha;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        //Verificar se há um ID
-        if(request.getParameter("id")!=null){
+        //Verificando a existência do ID
+        if(request.getParameter("id") != null){
             this.id = Integer.parseInt(request.getParameter("id"));
-        }        
-        
-        //Recebendo valores do formulário de cadastro
-        this.artista = request.getParameter("artista");
-        this.genero = Integer.parseInt(request.getParameter("genero"));
-        this.nacionalidade = request.getParameter("nacionalidade");
-        if(request.getParameter("solo")!=null){
-            this.solo = 1;
-        } else {
-            this.solo = 0;
         }
         
-        //Criando objeto da classe Artista para salvar no BD
-        Artista artista = new Artista(
-                this.artista,
-                this.genero,
-                this.nacionalidade,
-                this.solo
-        );       
-        
-        //Instanciando a classe DAO para usar o método
-        //de inserção enviando o objeto criado acima
-        try {
-            ArtistaDAO adao = new ArtistaDAO();
+        //Recebendo os dados do formulário
+        this.nome = request.getParameter("user");
+        this.nascimento = request.getParameter("nasc");
+        this.cpf = request.getParameter("cpf");
+        this.ra = request.getParameter("ra");
+        this.senha = request.getParameter("senha");
+                        
+        try{
             
-            //Se tivermos um ID, atualizaremos o registro
-            //senão salvaremos como um novo registro
-            if(request.getParameter("id")!=null){
-                artista.setIdArtista(this.id);
-                adao.updateArtista(artista);
+            SistemaDAO tdao = new SistemaDAO();
+            
+            if(request.getParameter("id") != null) {
+                
+                Sistema t = new Sistema(
+                    this.id,
+                    this.nome,
+                    this.nascimento,
+                    this.cpf,
+                    this.ra
+                );
+                tdao.updateSistema(t);
+                
             } else {
-                adao.insertArtista(artista);
+                
+                Sistema ss = new Sistema(
+                    this.nome,
+                    this.nascimento,
+                    this.cpf,
+                    this.ra,
+                    this.senha
+                );
+                tdao.insertSistema(ss);
+                
             }
-                response.sendRedirect("lista.jsp");
+            
+            response.sendRedirect("lista.jsp");
+            
+        } catch(SQLException | ClassNotFoundException erro){ 
         
-        } catch(ClassNotFoundException | SQLException erro) {   
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CadastroArtista</title>");            
+            out.println("<title>Servlet TitularController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Ocorreu algum erro: " + erro + "</h1>");
+            out.println("<h1>erro: " + erro + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        }
+            }
         }
     }
 

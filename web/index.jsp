@@ -1,16 +1,18 @@
 <%-- 
     Document   : index
-    Created on : 8 de mai. de 2023, 19:42:47
+    Created on : 8 de mai. de 2023, 19:41:50
     Author     : QI
 --%>
+
 <%
-    if(session.getAttribute("usserLoggedSession") !=null) {
-    response.sendRedirect("home.jsp");
-    }
+   if(session.getAttribute("userLoggedSession") != null){
+        response.sendRedirect("home.jsp");
+   }
 %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html class="login">
     <head>
         <link rel="icon" href="img/musica-icon.png"/>
         <link rel="stylesheet" href="css/style.css"/>
@@ -20,7 +22,7 @@
     </head>
     <body>
         <form action="Login" method="post" id="form-login">
-            <img src="img/lofi_girl.png" alt="Logotipo Lofi Girl" width="200" />
+            <img src="img/lofi_girl.png" alt="Logotipo discoteca virtual" width="250" />
             <br>
             
             <input type="email" name="user" id="user" class="fields" placeholder="Digite seu email" required>
